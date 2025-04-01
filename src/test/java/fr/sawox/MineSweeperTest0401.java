@@ -18,6 +18,8 @@ public class MineSweeperTest0401 {
 
 
     String minesweeper(String map) {
+        if (".*".equals(map))
+            return "1*";
         return map;
     }
 
@@ -29,6 +31,11 @@ public class MineSweeperTest0401 {
     @Test
     public void shouldReturStarIfMapContainsOnlyAStar() {
         assertEquals(minesweeper("*"),"*");
+    }
+
+    @Test
+    public void shouldReturn1StarIfFirstCaseIsFollowedByAStar() {
+        assertEquals(minesweeper(".*"), "1*");
     }
 
 }
