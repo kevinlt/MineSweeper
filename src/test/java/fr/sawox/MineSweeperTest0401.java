@@ -28,6 +28,9 @@ public class MineSweeperTest0401 {
         if (rows[0].equals(".") && rows[1].equals("*")) {
             rows[0] = "1";
         }
+        if (rows[1].equals(".") && rows[0].equals("*")) {
+            rows[1] = "1";
+        }
         return Arrays.stream(rows).collect(Collectors.joining("\n"));
     }
 
@@ -59,6 +62,11 @@ public class MineSweeperTest0401 {
     @Test
     public void shouldReturn1IfCaseIsAboveAStar() {
         assertEquals(minesweeper(".\n*"), "1\n*");
+    }
+
+    @Test
+    public void shouldReturn1IfCaseIsBelowAStar() {
+        assertEquals(minesweeper("*\n."), "*\n1");
     }
 
 }
