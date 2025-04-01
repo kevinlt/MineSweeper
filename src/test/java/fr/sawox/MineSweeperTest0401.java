@@ -18,10 +18,8 @@ public class MineSweeperTest0401 {
 
 
     String minesweeper(String map) {
-        if (".*".equals(map))
-            return "1*";
-        if ("*.".equals(map))
-            return "*1";
+        map = map.replaceAll("\\.\\*", "1*");
+        map = map.replaceAll("\\*\\.", "*1");
         return map;
     }
 
