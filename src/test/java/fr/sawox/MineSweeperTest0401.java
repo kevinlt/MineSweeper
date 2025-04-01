@@ -55,6 +55,12 @@ public class MineSweeperTest0401 {
                         if (rows[i-1].charAt(j+1) == '*')
                             chars[j] = String.valueOf(Integer.parseInt(chars[j])+1);
                     }
+
+                    // lower right
+                    if (i < rows.length-1 && j < chars.length-1) {
+                        if (rows[i+1].charAt(j+1) == '*')
+                            chars[j] = String.valueOf(Integer.parseInt(chars[j])+1);
+                    }
                 }
             }
             rows[i] = String.join("", chars);
@@ -111,6 +117,11 @@ public class MineSweeperTest0401 {
     @Test
     public void shouldReturn1IfUpperRightCaseIsStar() {
         assertEquals(minesweeper(".*\n.."), "1*\n11");
+    }
+
+    @Test
+    public void shouldReturn1IfLowerRightCaseIsStar() {
+        assertEquals(minesweeper("..\n.*"), "11\n1*");
     }
 
 }
