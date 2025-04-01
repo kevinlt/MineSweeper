@@ -2,7 +2,7 @@ package fr.sawox;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 /**
  * .*.**.
@@ -18,12 +18,17 @@ public class MineSweeperTest0401 {
 
 
     String minesweeper(String map) {
-        return "";
+        return map;
     }
 
     @Test
     public void shouldReturnAString() {
         assertNotNull(minesweeper(".*.**.\n....*.\n..*..."));
+    }
+
+    @Test
+    public void shouldReturStarIfMapContainsOnlyAStar() {
+        assertEquals(minesweeper("*"),"*");
     }
 
 }
