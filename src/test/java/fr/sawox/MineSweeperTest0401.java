@@ -71,8 +71,7 @@ public class MineSweeperTest0401 {
             }
             rows[i] = String.join("", chars);
         }
-        map = String.join("\n", rows);
-        return map.replaceAll("0", ".");
+        return String.join("\n", rows);
     }
 
     @Test
@@ -133,6 +132,12 @@ public class MineSweeperTest0401 {
     @Test
     public void shouldReturn1IfLowerLeftCaseIsStar() {
         assertEquals(minesweeper("..\n*."), "11\n*1");
+    }
+
+    @Test
+    public void shouldRunEveryMap() {
+        assertEquals(minesweeper(".*.**.\n....*.\n..*..."), "1*2**2\n1234*2\n01*211");
+        assertEquals(minesweeper(".****.\n.*.*..\n.***.."), "2****1\n3*8*41\n2***20");
     }
 
 }
