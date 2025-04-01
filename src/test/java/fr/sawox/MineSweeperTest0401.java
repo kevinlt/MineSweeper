@@ -18,6 +18,7 @@ public class MineSweeperTest0401 {
 
 
     String minesweeper(String map) {
+        map = map.replaceAll("\\*\\.\\*", "*2*");
         map = map.replaceAll("\\.\\*", "1*");
         map = map.replaceAll("\\*\\.", "*1");
         return map;
@@ -41,6 +42,11 @@ public class MineSweeperTest0401 {
     @Test
     public void shouldReturnStar1IfSecondCaseIsPrecededByAStar() {
         assertEquals(minesweeper("*."), "*1");
+    }
+
+    @Test
+    public void shouldReturn2IfCasIsBetween2Stars() {
+        assertEquals(minesweeper("*.*"), "*2*");
     }
 
 }
