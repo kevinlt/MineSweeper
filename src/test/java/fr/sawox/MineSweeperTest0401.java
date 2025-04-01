@@ -25,6 +25,11 @@ public class MineSweeperTest0401 {
         map = map.replaceAll("\\.\\*", "1*");
         map = map.replaceAll("\\*\\.", "*1");
         String[] rows = map.split("\n");
+        if (rows.length > 2) {
+            if (rows[1].equals(".") && rows[0].equals("*") && rows[2].equals("*")) {
+                rows[1] = "2";
+            }
+        }
         if (rows.length > 1) {
             if (rows[0].equals(".") && rows[1].equals("*")) {
                 rows[0] = "1";
@@ -70,6 +75,11 @@ public class MineSweeperTest0401 {
     @Test
     public void shouldReturn1IfCaseIsBelowAStar() {
         assertEquals(minesweeper("*\n."), "*\n1");
+    }
+
+    @Test
+    public void shouldReturn2IfStarsAreAboveAndBelowCase() {
+        assertEquals(minesweeper("*\n.\n*"), "*\n2\n*");
     }
 
 }
