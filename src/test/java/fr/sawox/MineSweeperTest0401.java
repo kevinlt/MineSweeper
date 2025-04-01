@@ -24,29 +24,37 @@ public class MineSweeperTest0401 {
             String[] chars = rows[i].split("");
             for (int j=0;j<chars.length;j++) {
                 if (!chars[j].equals("*")) {
+                    // right
                     if (j >0) {
                         if (chars[j-1].equals("*"))
                             chars[j] = String.valueOf(Integer.parseInt(chars[j])+1);
-                        if (i > 0) {
-                            if (rows[i-1].charAt(j-1) == '*') {
-                                chars[j] = String.valueOf(Integer.parseInt(chars[j])+1);
-                            }
-                        }
                     }
+                    // left
                     if (j < chars.length-1 && chars[j+1].equals("*"))
                         chars[j] = String.valueOf(Integer.parseInt(chars[j])+1);
 
+                    // above
                     if (i > 0) {
-                        if (rows[i-1].charAt(j) == '*') {
+                        if (rows[i-1].charAt(j) == '*')
                             chars[j] = String.valueOf(Integer.parseInt(chars[j])+1);
-                        }
                     }
+                    // below
                     if (i < rows.length-1) {
-                        if (rows[i+1].charAt(j) == '*') {
+                        if (rows[i+1].charAt(j) == '*')
                             chars[j] = String.valueOf(Integer.parseInt(chars[j])+1);
-                        }
                     }
 
+                    // top left
+                    if ( j > 0 && i > 0) {
+                        if (rows[i-1].charAt(j-1) == '*')
+                            chars[j] = String.valueOf(Integer.parseInt(chars[j])+1);
+                    }
+
+                    // top right
+                    if (i > 0 && j < chars.length-1) {
+                        if (rows[i-1].charAt(j+1) == '*')
+                            chars[j] = String.valueOf(Integer.parseInt(chars[j])+1);
+                    }
                 }
             }
             rows[i] = String.join("", chars);
@@ -98,6 +106,11 @@ public class MineSweeperTest0401 {
     @Test
     public void shouldReturn1IfUpperLeftCaseIsStar() {
         assertEquals(minesweeper("*.\n.."), "*1\n11");
+    }
+
+    @Test
+    public void shouldReturn1IfUpperRightCaseIsStar() {
+        assertEquals(minesweeper(".*\n.."), "1*\n11");
     }
 
 }
