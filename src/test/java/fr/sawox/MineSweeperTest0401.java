@@ -25,12 +25,15 @@ public class MineSweeperTest0401 {
         map = map.replaceAll("\\.\\*", "1*");
         map = map.replaceAll("\\*\\.", "*1");
         String[] rows = map.split("\n");
-        if (rows[0].equals(".") && rows[1].equals("*")) {
-            rows[0] = "1";
+        if (rows.length > 1) {
+            if (rows[0].equals(".") && rows[1].equals("*")) {
+                rows[0] = "1";
+            }
+            if (rows[0].equals("*") && rows[1].equals(".")) {
+                rows[1] = "1";
+            }
         }
-        if (rows[1].equals(".") && rows[0].equals("*")) {
-            rows[1] = "1";
-        }
+
         return Arrays.stream(rows).collect(Collectors.joining("\n"));
     }
 
